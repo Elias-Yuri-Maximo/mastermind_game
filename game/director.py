@@ -57,14 +57,14 @@ class Director:
         """
 
         # display the game board
-        original_number = self.board 
-        hint = self._board._create_hint()
-        self._console.write(hint)
+        board = self._board.to_string() 
+        self._console.write(board)
+
         # get next player's move
         player = self._roster.get_current()
         self._console.write(f"{player.get_name()}'s turn:")
 
-        guess = Guess(self._console.read_number("Make a guess"))
+        guess = Guess(self._console.read_number("What is your guess?"))
         player.set_guess(guess)
 
     def _do_updates(self):
@@ -76,7 +76,7 @@ class Director:
         """
         player = self._roster.get_current()
         guess = player.get_guess()
-        self._board.apply_tips(guess)
+        self._board._create_hint(guess)
 
     def _do_outputs(self):
         """Outputs the important game information for each round of play. In 
