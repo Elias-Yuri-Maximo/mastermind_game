@@ -33,7 +33,7 @@ class Director:
             self._do_updates()
             self._do_outputs()
 
-    def _prepare_game():
+    def _prepare_game(self):
         
         """Prepares the game before it begins. In this case, that means getting the player names and adding them to the roster.
         
