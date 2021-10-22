@@ -1,4 +1,7 @@
 import random
+from typing import Text
+
+from mastermind.game.guess import Guess
 '''
 The board class keeps track of the state of the game. 
 It shou
@@ -8,7 +11,11 @@ to_string() passes the current board into a string type, so it can be printed
 class Board():
     def __init__(self):
         
-        self._items = []
+        self._current_hint =  '****'
+        self._items = self.prepare()
+        self._current_name = ''
+
+
 
 
     def prepare(self, player):
@@ -22,6 +29,19 @@ class Board():
         guess = "----"
         hint = "****"
         self._items[name] = [code, guess, hint]
+        #list_one = self._items[name]
+        #code= list_one[0]
+
+    def update(self, player):
+
+        name = player.get_name()
+
+        list_one = self._items[name]
+        
+        list_one[1] = player.get_guess()
+        hint = list_one[2] = self._current_hint
+        self._items[name] = list_one
+
         
     def _create_hint(self, code, guess):
         """Generates a hint based on the given code and guess.
@@ -42,14 +62,29 @@ class Board():
                 hint += "o"
             else:
                 hint += "*"
+        self._current_hint = hint
         return hint
-
-
-        '''
-        def _to_string(self)
-        turns the board and returns a string so it can be printed by the console
-
-        def _is_complete(self)
+    
+    def _is_complete(self, player):
         """checks if the number is complete, and if is returns a true boolean value""" 
+        
+        name = player.get_name()
+        info = self._items[name]
+        
 
+        if info[0] == info[1]:
+            return True 
+
+        else: 
+            return False
+        
+        
+    def _to_string(self, player):
         '''
+        turns the board and returns a string so it can be printed by the console
+        '''
+        name = player.get_name()
+
+
+        text = '-----------------------\n'
+        text += 
