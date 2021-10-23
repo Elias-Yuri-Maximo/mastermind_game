@@ -5,7 +5,6 @@ from game.player import Player
 from game.roster import Roster
 
 
-
 class Director:
 
     """A code template for a person who directs the game. The responsibility of 
@@ -13,7 +12,7 @@ class Director:
 
     def __init__(self):
         """The class constructor.
-        
+
     Args:
     self (Director): an instance of Director.
     """
@@ -25,28 +24,28 @@ class Director:
         self._roster = Roster()
 
     def start_game(self):
-        
+
         self._prepare_game()
-        
+
         while self._keep_playing:
             self._get_inputs()
             self._do_updates()
             self._do_outputs()
 
     def _prepare_game(self):
-        
         """Prepares the game before it begins. In this case, that means getting the player names and adding them to the roster.
-        
+
         Args:
             self (Director): An instance of Director.
         """
         for n in range(2):
-            #creates two instances of player 
+            # creates two instances of player
             name = self._console.read(f"Enter a name for player {n + 1}: ")
             player = Player(name)
-            #calls the function add player from roster that adds an instance of
+            # calls the function add player from roster that adds an instance of
             # player with current name
             self._roster.add_player(player)
+        self._board.prepare(self._roster.players)
 
     def _get_inputs(self):
         """Gets the inputs at the beginning of each round of play. In this case,
@@ -57,7 +56,7 @@ class Director:
         """
 
         # display the game board
-        board = self._board.to_string() 
+        board = self._board._to_string()
         self._console.write(board)
 
         # get next player's move

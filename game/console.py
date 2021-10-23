@@ -1,4 +1,4 @@
-   '''
+'''
     Console is responsible for printing what is prompted to ir and 
     Getting the necessary information from the user. 
 
@@ -11,19 +11,21 @@
        def write(self, prompt)
        def read_number(self, prompt)
     pass
-   '''
-class Console:
-   """A code template for a computer console. The responsibility of this 
-    class of objects is to get text or numerical input and display text output.
-    
-    Stereotype:
-        Service Provider, Interfacer
+'''
 
-    Attributes:
-      prompt (string): The prompt to display on each line.
-   """
-     
-   def read(self, prompt):
+
+class Console:
+    """A code template for a computer console. The responsibility of this 
+     class of objects is to get text or numerical input and display text output.
+
+     Stereotype:
+         Service Provider, Interfacer
+
+     Attributes:
+       prompt (string): The prompt to display on each line.
+    """
+
+    def read(self, prompt):
         """Gets text input from the user through the screen.
 
         Args: 
@@ -35,7 +37,7 @@ class Console:
         """
         return input(prompt)
 
-   def read_number(self, prompt):
+    def read_number(self, prompt):
         """Gets numerical input from the user through the screen.
 
         Args: 
@@ -46,8 +48,8 @@ class Console:
             integer: The user's input as an integer.
         """
         return int(input(prompt))
-        
-   def write(self, text):
+
+    def write(self, text):
         """Displays the given text on the screen. 
 
         Args: 
