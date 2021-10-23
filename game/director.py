@@ -81,12 +81,14 @@ class Director:
         """Outputs the important game information for each round of play. In 
         this case, that means checking if there are stones left and declaring the winner.
 
+
         Args:
             self (Director): An instance of Director.
         """
         if self._board._is_complete():
             winner = self._roster.get_current()
             name = winner.get_name()
-            print(f"\n{name} won!")
+            print(f"\033[2;31;43m\n{name} won!")
+            
             self._keep_playing = False
         self._roster.next_player()
