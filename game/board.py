@@ -31,6 +31,7 @@ class Board():
         hint = "****"
         self._items[self.name_one] = [guess, hint]
         self._items[self.name_two] = [guess, hint]
+    
 
     def _create_hint(self, guess):
         """Generates a hint based on the given code and guess.
@@ -41,6 +42,9 @@ class Board():
         Returns:
         string: A hint in the form [xxxx]
         """
+        guess = str(guess.get_guess())
+        #guess = [int(x) for x in str(guess)]
+        # turns guess from int into a list to be iterated
 
         hint = ""
         for index, letter in enumerate(guess):
@@ -51,9 +55,10 @@ class Board():
             else:
                 hint += "*"
         if (self.count % 2) == 0:
-            self._items[self.name_one] = [guess, hint]
-        else:
             self._items[self.name_two] = [guess, hint]
+            
+        else:
+            self._items[self.name_one] = [guess, hint]
         self.count += 1
         self.hint = hint
 

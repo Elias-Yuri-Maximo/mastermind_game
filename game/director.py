@@ -61,9 +61,9 @@ class Director:
 
         # get next player's move
         player = self._roster.get_current()
-        self._console.write(f"{player.get_name()}'s turn:")
+        self._console.write(f"{player.get_name()}'s turn: ")
 
-        guess = Guess(self._console.read_number("What is your guess?"))
+        guess = Guess(self._console.read_number("What is your guess? "))
         player.set_guess(guess)
 
     def _do_updates(self):
@@ -84,7 +84,7 @@ class Director:
         Args:
             self (Director): An instance of Director.
         """
-        if self._board.is_complete():
+        if self._board._is_complete():
             winner = self._roster.get_current()
             name = winner.get_name()
             print(f"\n{name} won!")
